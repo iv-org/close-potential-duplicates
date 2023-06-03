@@ -1,7 +1,7 @@
 {
   "name": "potential-duplicates",
   "description": "Search for potential issue duplicates using Damerau–Levenshtein algorithm.",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "files": [
     "dist",
@@ -33,7 +33,7 @@
     "email": "bubkoo.wy@gmail.com"
   },
   "contributors": [],
-  "repository": "https://github.com/wow-actions/potential-duplicates",
+  "repository": "https://github.com/iv-org/close-potential-duplicates",
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^5.0.0",

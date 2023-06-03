@@ -67,6 +67,7 @@ export namespace Action {
 
         const comment = core.getInput('comment')
         const reactions = core.getInput('reactions')
+        const close = core.getInput('close') as 'false' | 'true'
         if (comment) {
           const body = mustache.render(comment, {
             issues: duplicates,
@@ -81,6 +82,14 @@ export namespace Action {
           if (reactions) {
             await Reaction.add(octokit, data.id, reactions)
           }
+        }
+
+        if (close === 'true') {
+          octokit.rest.issues.update({
+            ...context.repo,
+            issue_number: payload.number,
+            state: 'closed',
+          })
         }
       }
     }

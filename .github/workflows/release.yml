@@ -18,18 +18,9 @@ jobs:
         run: yarn install
 
       - name: 📦　Build
-        run: yarn build
-
-      - name: 🔑　Generate Token
-        uses: wow-actions/use-app-token@v1
-        with:
-          app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.PRIVATE_KEY }}
-          env_name: bot_token
+        run: NODE_OPTIONS=--openssl-legacy-provider yarn build
 
       - name: 📦　Release
-        uses: wow-actions/release-github-action@v1
-        with:
-          GITHUB_TOKEN: ${{ env.bot_token }}
-          GIT_COMMITTER_NAME: wow-actions-bot
-          GIT_COMMITTER_EMAIL: wow-actions-bot@users.noreply.github.com
+        uses: wow-actions/release-github-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
